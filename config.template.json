@@ -1,11 +1,17 @@
 {
-    "urls": [
-    ],
+    "urls": {
+        "{key}": "{url}"
+    },
     "webhooks": [
         {
             "url": "https://discord.com/api/webhooks/{id}/{token}",
             "mentions": [
-                "{user_id}"
+                {
+                    "id": "{user_id}",
+                    "subscriptions": [
+                        "{key}"
+                    ]
+                }
             ]
         }
     ]
