@@ -1,0 +1,12 @@
+{
+    "urls": [
+    ],
+    "webhooks": [
+        {
+            "url": "https://discord.com/api/webhooks/{id}/{token}",
+            "mentions": [
+                "{user_id}"
+            ]
+        }
+    ]
+}
