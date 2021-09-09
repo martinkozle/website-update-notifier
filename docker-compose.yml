@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  website-update-notifier:
+    image: website-update-notifier
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
