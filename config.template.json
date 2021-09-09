@@ -1,18 +1,9 @@
 {
-    "urls": {
-        "{key}": "{url}"
-    },
     "webhooks": [
         {
-            "url": "https://discord.com/api/webhooks/{id}/{token}",
-            "mentions": [
-                {
-                    "id": "{user_id}",
-                    "subscriptions": [
-                        "{key}"
-                    ]
-                }
-            ]
+            "webhook": "https://discord.com/api/webhooks/{id}/{token}",
+            "urls": []
         }
-    ]
+    ],
+    "sleep": 30
 }
