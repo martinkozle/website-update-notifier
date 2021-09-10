@@ -57,19 +57,21 @@ class NotificationWebhook:
     def check_updates(self):
         for url in self.urls:
             text = request_text(url)
-            if url not in self.html_dict:
-                self.html_dict[url] = text
-            if self.html_dict[url] != text:
-                diff = '\n'.join(
-                    filter(
-                        lambda s: not s.startswith('  '),
-                        difflib.ndiff(
-                            self.html_dict[url].split('\n'), text.split('\n')
+            if text:
+                if url not in self.html_dict:
+                    self.html_dict[url] = text
+                elif self.html_dict[url] != text:
+                    diff = '\n'.join(
+                        filter(
+                            lambda s: not s.startswith('  '),
+                            difflib.ndiff(
+                                self.html_dict[url].split('\n'),
+                                text.split('\n')
+                            )
                         )
                     )
-                )
-                self.html_dict[url] = text
-                self.send_notification(url, diff)
+                    self.html_dict[url] = text
+                    self.send_notification(url, diff)
 
 
 def load_config() -> dict:
@@ -87,7 +89,7 @@ def main():
     count = 1
     try:
         while True:
-            print(f'\r{count=:<9}', end='')
+            print(f'{count=}')
             count += 1
             for notification_webhook in notification_webhooks:
                 notification_webhook.check_updates()
